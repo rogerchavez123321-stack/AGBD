@@ -33,3 +33,22 @@ SELECT g.name, sum(t.TrackId) AS Canciones FROM genres g
   JOIN tracks t ON g.GenreId = t.GenreId
   GROUP by g.GenreId
 --10 sql--
+SELECT c.FirstName, art.Name AS Artista
+FROM customers c JOIN invoices i ON c.CustomerId = i.CustomerId
+JOIN invoice_items ii ON i.InvoiceId = ii.InvoiceId JOIN tracks t ON ii.TrackId = t.TrackId
+JOIN albums alb ON t.AlbumId = alb.AlbumId JOIN artists art ON alb.ArtistId = art.ArtistId
+GROUP BY c.FirstName, art.Name
+ORDER BY c.FirstName ASC
+--11 sql--
+SELECT c.FirstName, c.City, t.name AS Song, g.name AS Genre FROM customers c
+JOIN invoices inv ON c.CustomerId = inv.CustomerId JOIN invoice_items inv_i ON inv.InvoiceId = inv_i.InvoiceId
+JOIN tracks t ON inv_i.TrackId = t.TrackId JOIN albums a ON t.AlbumId = a.AlbumId
+JOIN artists art ON a.ArtistId = art.ArtistId JOIN genres g ON t.GenreId = g.GenreId
+--12 sql--
+SELECT * FROM employees e
+JOIN customers c ON e.EmployeeId = c.SupportRepId JOIN invoices i ON c.CustomerId = i.CustomerId
+JOIN invoice_items ii ON i.InvoiceId = ii.InvoiceId JOIN tracks t ON ii.TrackId = t.TrackId
+JOIN albums al ON t.AlbumId = al.AlbumId JOIN artists ar ON al.ArtistId = ar.ArtistId
+JOIN genres g ON t.GenreId = g.GenreId JOIN media_types mt ON t.MediaTypeId = mt.MediaTypeId
+JOIN playlist_track pt ON t.TrackId = pt.TrackId JOIN playlists p ON pt.PlaylistId = p.PlaylistId
+--(si se puede)--
