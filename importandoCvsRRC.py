@@ -10,8 +10,18 @@ print(df.head())
 
 #print(resultado) 
 
-YearsJ = df['Year_Joined']
+#YearsJ = df['Year_Joined']
 
-YearJ = df['Year_Joined'].sum()
+#YearJ = df['Year_Joined'].sum()
 
-print(f"total de jugadores ingresados hasta ahora es: {YearJ}")
+#print(f"total de jugadores ingresados hasta ahora es: {YearJ}")
+
+print("--- Analisis Avanzado de Datos ---")
+
+filtro_avanzado = df['Name'].str.startswith('R', na =False) 
+df_filtrado = df[filtro_avanzado]
+
+sumo_Age = df_filtrado['Age'].sum()
+
+print("--- Reporte de Edad ---")
+print(f"Suma de Edades Total: {sumo_Age:.2f}\n")
